@@ -1,0 +1,11 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.clock {
+    height: 30rem;
+    width: 30rem;
+    border: 20px solid #fff;
+}
