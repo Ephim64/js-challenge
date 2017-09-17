@@ -3,22 +3,22 @@
   var playingClassName = 'playing';
   var keysContainer = document.querySelector('div.keys');
   window.addEventListener('keydown', handleKeyDown);
-  window.addEventListener('keyup', handleKeyUp)
+  const keys = keysContainer.querySelectorAll('.key')
+  keys.forEach(k => k.addEventListener('transitionend', handleTransitionend));
 
   function handleKeyDown(e) {
-    var keyCode = e.keyCode;
-    var drum = keysContainer.querySelector('[data-key="' + keyCode + '"]');
-    if (drum) {
-      drum.classList.toggle(playingClassName);
+    const drum = keysContainer.querySelector(`.key[data-key="${e.keyCode}"]`);
+    const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+    if (drum && audio) {
+      drum.classList.add(playingClassName);
+      audio.currentTime = 0;
+      audio.play();
     }
   }
 
-  function handleKeyUp(e) {
-    var keyCode = e.keyCode;
-    var drum = keysContainer.querySelector('[data-key="' + keyCode + '"]');
-    if (drum) {
-      drum.classList.toggle(playingClassName);
-    }
+  function handleTransitionend(e) {
+    if (e.propertyName !== 'transform') return;
+    this.classList.remove(playingClassName);
   }
 
 })()
