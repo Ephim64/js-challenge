@@ -34,3 +34,7 @@ input{
   padding: var(--spacing);
   background: var(--color);
 }
+
+.main-header .hl{
+  color: var(--color);
+}
