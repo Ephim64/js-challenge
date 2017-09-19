@@ -4,7 +4,7 @@
 
   function handleChange(e) {
     const suffix = this.dataset.sizing || '';
-    document.body.style.setProperty(`--${e.target.name}`, this.value + suffix);
+    document.documentElement.style.setProperty(`--${e.target.name}`, this.value + suffix);
   }
 
 })();
