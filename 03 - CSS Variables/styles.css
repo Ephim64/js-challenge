@@ -1,7 +1,10 @@
-body{
+:root{
   --spacing: 10px;
   --blur: 10px;
   --color: #fff;
+}
+
+body{
   text-align: center;
   background: #193549;
   color: #fff;
