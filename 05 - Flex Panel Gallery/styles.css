@@ -1,0 +1,48 @@
+*{
+  box-sizing: border-box;
+}
+
+body{
+  margin: 0;
+}
+
+p{
+  margin: 0;
+}
+
+.panels{
+  height: 100vh;
+  display: flex;
+  overflow: hidden;
+}
+
+.panel{
+  display: flex;
+  flex-direction: column ;
+  flex-grow: 1;
+  justify-content: center;
+  align-items: center;
+}
+
+.panel > *{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.panel-1{
+  background: #DC4C46;
+}
+.panel-2{
+  background: #672E3B;
+}
+.panel-3{
+  background: #F3D6E4;
+}
+.panel-4{
+  background: #C48F65;
+}
+.panel-5{
+  background: #223A5E;
+}
