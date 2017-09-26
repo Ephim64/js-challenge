@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Type Ahead 👀</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <form class="search-form">
+    <input type="text" class="search" placeholder="City or State">
+    <ul class="suggestions">
+      <li>Filter for a city</li>
+      <li>or a state</li>
+    </ul>
+  </form>
+  <script>
+    const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
+    let json = null;
+    fetch(endpoint).then(res => res.json()).then(pd => json = pd);
+    const suggestions = document.querySelector('ul.suggestions');
+    const input = document.querySelector('input.search');
+    input.addEventListener('input', filterData);
+
+    function filterData(e) {
+      const value = this.value.toLowerCase();
+      const filtered = json.filter(item => item.city.toLowerCase().indexOf(value) >= 0 || item.state.toLowerCase().indexOf(value) >= 0);
+      updateResults(filtered);
+    }
+
+    function updateResults(src) {
+      const list = src.map(createListItem);
+      suggestions.innerHTML = list.join('');
+    }
+
+    function createListItem({ city, state, population }) {
+      return `<li>
+      <span class="name">${city}, ${state}</span>
+      <span class="population">${population}</span>
+      </li>`;
+    }
+  </script>
+</body>
+
+</html>
