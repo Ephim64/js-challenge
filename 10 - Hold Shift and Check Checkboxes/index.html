@@ -97,7 +97,8 @@
     </div>
   </div>
 
-  <script>
+  <!-- Mark up dependent version -->
+  <!-- <script>
     let start;
     const inbox = document.querySelector('.inbox');
 
@@ -125,6 +126,31 @@
     }
 
     inbox.addEventListener('click', handleClick);
+  </script> -->
+
+  <!-- Mark up independent -->
+  <script>
+    let lastChecked;
+    let inBetween = false;
+    const inputs = document.querySelectorAll('.inbox input[type="checkbox"]');
+
+    function handleCheck(e) {
+      if (e.shiftKey && this.checked) {
+        inputs.forEach(checkbox => {
+          if (checkbox === this || checkbox === lastChecked) {
+            inBetween = !inBetween;
+          }
+          if (inBetween) {
+            checkbox.checked = true;
+          }
+        });
+      }
+      lastChecked = this;
+    }
+
+    inputs.forEach(inp => {
+      inp.addEventListener('click', handleCheck);
+    });
   </script>
 </body>
 
