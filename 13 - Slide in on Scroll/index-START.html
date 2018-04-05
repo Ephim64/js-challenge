@@ -66,7 +66,7 @@
         var imgBottom = img.offsetTop + img.height;
         var isHalfShown = bottomLevel > img.offsetTop;
         var isOnOffScreen = imgBottom > window.scrollY;
-        console.log(`${isHalfShown} && ${isOnOffScreen}`);
+
         if(isHalfShown && isOnOffScreen){
           img.classList.add('active');
         } else {
